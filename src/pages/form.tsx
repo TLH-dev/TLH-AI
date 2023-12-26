@@ -1,22 +1,22 @@
-import React from "react";
-import { Button, Input, Box, Page, useSnackbar } from "zmp-ui";
-import { useRecoilState } from "recoil";
-import { displayNameState } from "../state";
-import { useNavigate } from "react-router";
+import React from 'react'
+import { Button, Input, Box, Page, useSnackbar } from 'zmp-ui'
+import { useRecoilState } from 'recoil'
+import { displayNameState } from '../state'
+import { useNavigate } from 'react-router'
 
 const FormPage: React.FunctionComponent = () => {
-  const [displayName, setDisplayName] = useRecoilState(displayNameState);
-  const snackbar = useSnackbar();
-  const navigate = useNavigate();
+  const [displayName, setDisplayName] = useRecoilState(displayNameState)
+  const snackbar = useSnackbar()
+  // const navigate = useNavigate();
 
   const handleSubmit = () => {
     snackbar.openSnackbar({
       duration: 3000,
-      text: "Display name updated!",
-      type: "success",
-    });
-    navigate(-1);
-  };
+      text: 'Display name updated!',
+      type: 'success',
+    })
+    // navigate(-1);
+  }
 
   return (
     <Page className="page">
@@ -37,7 +37,7 @@ const FormPage: React.FunctionComponent = () => {
         </Box>
       </div>
     </Page>
-  );
-};
+  )
+}
 
-export default FormPage;
+export default FormPage

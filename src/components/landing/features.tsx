@@ -1,4 +1,4 @@
-import ToolsNavigation from "@/components/dashboard/tools-navigation";
+import ToolsNavigation from '@/src/components/dashboard/tools-navigation'
 
 const Features = () => {
   return (
@@ -8,4 +8,4 @@ const Features = () => {
   )
 }
 
-export default Features;
+export default Features

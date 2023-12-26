@@ -1,28 +1,23 @@
-"use client";
+'use client'
 
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
-import { useProStore } from "@/stores/pro-store";
-import SubscriptionButton from "../subscription-button";
+import { Dialog, DialogContent } from '@/src/components/ui/dialog'
+import { useProStore } from '@/stores/pro-store'
+import SubscriptionButton from '../subscription-button'
 
 interface UpgradeProModalProps {
-  isProPlan?: boolean;
+  isProPlan?: boolean
 }
 
 const UpgradeProModal: React.FC<UpgradeProModalProps> = ({ isProPlan }) => {
-  const { isOpen, handleCloseProModal } = useProStore();
+  const { isOpen, handleCloseProModal } = useProStore()
 
   return (
     <Dialog open={isOpen}>
-      <DialogContent
-        onClose={handleCloseProModal}
-        showOverlay>
+      <DialogContent onClose={handleCloseProModal} showOverlay>
         <SubscriptionButton isPro={isProPlan} />
       </DialogContent>
     </Dialog>
   )
 }
 
-export default UpgradeProModal;
+export default UpgradeProModal

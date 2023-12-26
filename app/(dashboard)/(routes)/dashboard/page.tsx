@@ -1,4 +1,4 @@
-import ToolsNavigation from "@/components/dashboard/tools-navigation";
+import ToolsNavigation from '@/src/components/dashboard/tools-navigation'
 
 const DashboardPage = () => {
   return (
@@ -8,4 +8,4 @@ const DashboardPage = () => {
   )
 }
 
-export default DashboardPage;
+export default DashboardPage

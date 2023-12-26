@@ -1,5 +1,5 @@
-import Features from "@/components/landing/features";
-import Hero from "@/components/landing/hero";
+import Features from '@/src/components/landing/features'
+import Hero from '@/src/components/landing/hero'
 
 const LandingPage = () => {
   return (
@@ -10,4 +10,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage;
+export default LandingPage

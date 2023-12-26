@@ -1,28 +1,27 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import { App, ZMPRouter, AnimationRoutes, SnackbarProvider } from "zmp-ui";
-import { RecoilRoot } from "recoil";
-import HomePage from "../pages";
-import About from "../pages/about";
-import Form from "../pages/form";
-import User from "../pages/user";
-
+import { Route, Routes } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
+import { App, SnackbarProvider } from 'zmp-ui'
+import HomePage from '../pages'
+import About from '../pages/about'
+import Form from '../pages/form'
+import User from '../pages/user'
+import { BrowserRouter as Router } from 'react-router-dom'
 const MyApp = () => {
   return (
-    <RecoilRoot>
-      <App>
+    <App>
+      <RecoilRoot>
         <SnackbarProvider>
-          <ZMPRouter>
-            <AnimationRoutes>
-              <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Router>
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
               <Route path="/about" element={<About></About>}></Route>
               <Route path="/form" element={<Form></Form>}></Route>
               <Route path="/user" element={<User></User>}></Route>
-            </AnimationRoutes>
-          </ZMPRouter>
+            </Routes>
+          </Router>
         </SnackbarProvider>
-      </App>
-    </RecoilRoot>
-  );
-};
-export default MyApp;
+      </RecoilRoot>
+    </App>
+  )
+}
+export default MyApp

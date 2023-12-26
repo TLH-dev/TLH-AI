@@ -9,7 +9,7 @@ body,
     position: relative;
 }
 
-@layer base {
+@layer components {
     :root {
         --background: 0 0% 100%;
         --foreground: 0 0% 3.9%;
@@ -109,10 +109,10 @@ body,
     .gradient-btn {
         @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500;
     }
-    * {
+    /* * {
         @apply border-border;
-    }
-    body {
+    } */
+    /* body {
         @apply bg-background text-foreground;
-    }
+    } */
 }

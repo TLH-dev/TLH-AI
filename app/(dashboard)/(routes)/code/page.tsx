@@ -1,21 +1,21 @@
-"use client";
+'use client'
 
-import { useChat } from "ai/react";
-import { Send } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useChat } from 'ai/react'
+import { Send } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
-import { Button } from "@/components/ui/button";
-import UserMessage from "@/components/dashboard/user-message";
-import AiResponse from "@/components/dashboard/ai-response";
-import { Textarea } from "@/components/ui/textarea";
-import MarkdownResponse from "@/components/dashboard/markdown-response";
-import ToolsNavigation from "@/components/dashboard/tools-navigation";
-import { useProStore } from "@/stores/pro-store";
-import { cn } from "@/lib/utils";
+import { Button } from '@/src/components/ui/button'
+import UserMessage from '@/src/components/dashboard/user-message'
+import AiResponse from '@/src/components/dashboard/ai-response'
+import { Textarea } from '@/src/components/ui/textarea'
+import MarkdownResponse from '@/src/components/dashboard/markdown-response'
+import ToolsNavigation from '@/src/components/dashboard/tools-navigation'
+import { useProStore } from '@/stores/pro-store'
+import { cn } from '@/lib/utils'
 
 const CodePage = () => {
-  const { handleOpenOrCloseProModal } = useProStore();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const { handleOpenOrCloseProModal } = useProStore()
+  const containerRef = useRef<HTMLDivElement>(null)
   const {
     messages,
     input,
@@ -24,28 +24,28 @@ const CodePage = () => {
     isLoading,
     stop,
     error,
-    setMessages
+    setMessages,
   } = useChat({
-    api: "/api/code"
-  });
+    api: '/api/code',
+  })
 
   useEffect(() => {
     if (error) {
-      const errorParsed = JSON.parse(error?.message);
+      const errorParsed = JSON.parse(error?.message)
       if (errorParsed?.status === 403) {
-        handleOpenOrCloseProModal();
+        handleOpenOrCloseProModal()
       }
     }
-  }, [error, handleOpenOrCloseProModal]);
+  }, [error, handleOpenOrCloseProModal])
 
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+      containerRef.current.scrollTop = containerRef.current.scrollHeight
     }
-  }, [messages]);
+  }, [messages])
 
   const handleClearChat = () => {
-    setMessages([]);
+    setMessages([])
   }
 
   return (
@@ -53,37 +53,34 @@ const CodePage = () => {
       <div
         ref={containerRef}
         className={cn(
-          "h-[calc(100vh-180px)] pl-4 overflow-y-auto space-y-10 scroll-smooth",
-          "lg:pl-0"
-        )}>
-        {messages.length > 0
-          ? <>
-            {
-              messages.map(m => (
-                <div key={m.id} className="whitespace-pre-wrap">
-                  {m.role === 'user' ?
-                    <UserMessage>
-                      <MarkdownResponse content={m.content} />
-                    </UserMessage>
-                    :
-                    <AiResponse>
-                      <MarkdownResponse content={m.content} />
-                    </AiResponse>
-                  }
-                </div>
-              ))
-            }
+          'h-[calc(100vh-180px)] pl-4 overflow-y-auto space-y-10 scroll-smooth',
+          'lg:pl-0'
+        )}
+      >
+        {messages.length > 0 ? (
+          <>
+            {messages.map((m) => (
+              <div key={m.id} className="whitespace-pre-wrap">
+                {m.role === 'user' ? (
+                  <UserMessage>
+                    <MarkdownResponse content={m.content} />
+                  </UserMessage>
+                ) : (
+                  <AiResponse>
+                    <MarkdownResponse content={m.content} />
+                  </AiResponse>
+                )}
+              </div>
+            ))}
             <div className="absolute left-0 bottom-20 text-right w-full pr-3">
-              <Button
-                size="sm"
-                onClick={handleClearChat}
-                variant="outline"
-              >
+              <Button size="sm" onClick={handleClearChat} variant="outline">
                 Clear chat
               </Button>
             </div>
           </>
-          : <ToolsNavigation />}
+        ) : (
+          <ToolsNavigation />
+        )}
       </div>
       <div className="mb-[13px]">
         <form
@@ -99,12 +96,9 @@ const CodePage = () => {
           <Button
             type="submit"
             disabled={!input}
-            className="absolute right-2 gradient-btn">
-            {
-              isLoading
-                ? "Stop"
-                : <Send />
-            }
+            className="absolute right-2 gradient-btn"
+          >
+            {isLoading ? 'Stop' : <Send />}
           </Button>
         </form>
       </div>
@@ -112,4 +106,4 @@ const CodePage = () => {
   )
 }
 
-export default CodePage;
+export default CodePage

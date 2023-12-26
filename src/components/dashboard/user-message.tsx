@@ -1,13 +1,13 @@
-import { useUser } from "@clerk/nextjs";
+import { useUser } from '@clerk/nextjs'
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from '@/src/components/ui/avatar'
 
 interface UserMessageProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const UserMessage: React.FC<UserMessageProps> = ({ children }) => {
-  const { user } = useUser();
+  const { user } = useUser()
 
   return (
     <div className="border p-4 pb-10 rounded-lg mr-20 relative">
@@ -22,4 +22,4 @@ const UserMessage: React.FC<UserMessageProps> = ({ children }) => {
   )
 }
 
-export default UserMessage;
+export default UserMessage

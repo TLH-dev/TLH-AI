@@ -1,15 +1,13 @@
-import UpgradeProModal from "@/components/dashboard/upgrade-pro-modal";
-import Sidebar from "@/components/sidebar";
-import MobileSidebar from "@/components/sidebar/mobile-sidebar";
-import Topbar from "@/components/topbar";
-import { checkSubscription, getUserLimitCount } from "@/lib/user-limit";
-import { cn } from "@/lib/utils";
+import UpgradeProModal from '@/src/components/dashboard/upgrade-pro-modal'
+import Sidebar from '@/src/components/sidebar'
+import MobileSidebar from '@/src/components/sidebar/mobile-sidebar'
+import Topbar from '@/src/components/topbar'
+import { checkSubscription, getUserLimitCount } from '@/lib/user-limit'
+import { cn } from '@/lib/utils'
 
-const DashboardLayout = async (props: {
-  children: React.ReactNode;
-}) => {
-  const isProPlan = await checkSubscription();
-  const userLimitCount = await getUserLimitCount();
+const DashboardLayout = async (props: { children: React.ReactNode }) => {
+  const isProPlan = await checkSubscription()
+  const userLimitCount = await getUserLimitCount()
 
   return (
     <div>
@@ -21,17 +19,18 @@ const DashboardLayout = async (props: {
           isProPlan={isProPlan}
           userLimitCount={userLimitCount}
           className={cn(
-            "fixed left-0 z-20 w-80 [&:has([is-navbar-minimal])]:w-fit hidden",
-            "lg:block"
-          )} />
-        <MobileSidebar
-          isProPlan={isProPlan}
-          userLimitCount={userLimitCount} />
+            'fixed left-0 z-20 w-80 [&:has([is-navbar-minimal])]:w-fit hidden',
+            'lg:block'
+          )}
+        />
+        <MobileSidebar isProPlan={isProPlan} userLimitCount={userLimitCount} />
         <UpgradeProModal isProPlan={isProPlan} />
-        <div className={cn(
-          "bg-background h-[calc(100vh-56px)]",
-          "lg:rounded-3xl lg:p-7"
-        )}>
+        <div
+          className={cn(
+            'bg-background h-[calc(100vh-56px)]',
+            'lg:rounded-3xl lg:p-7'
+          )}
+        >
           {props.children}
         </div>
       </main>
@@ -39,4 +38,4 @@ const DashboardLayout = async (props: {
   )
 }
 
-export default DashboardLayout;
+export default DashboardLayout

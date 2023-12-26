@@ -15,12 +15,20 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <link rel="icon" href="/src/static/icons/favicon.png" />
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <title>The Libra House AI</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="root"></div>
     <!-- built script files will be auto injected -->
 
-    <script type="module" src="/src/app.ts"></script>
+    <script type="module" src="src/app.tsx"></script>
+    <!-- <script type="text/jsx">
+
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script> -->
   </body>
 </html>
